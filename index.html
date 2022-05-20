@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar">
+        <div id="total"></div>
+    </div>
+    <form onsubmit="storeData(event)" id="data">
+        <input type="text" id="name" placeholder="name">
+        <input type="text" id="course" placeholder="couse">
+        <input type="text" id="batch" placeholder="batch">
+        <input type="url" id="image" placeholder="image">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+function Data(name, course,batch,image) {
+  this.name = name;
+  this.course = course;
+  this.batch = batch;
+  this.image = image;
+  }
+// var student=JSON.parse(localStorage.getItem("student"))||[];
+    let arr=JSON.parse(localStorage.getItem("Data"))||[];
+
+    function storeData(e){
+        e.preventDefault();
+        
+        let form=document.getElementById("data")
+
+        let name=form.name.value;
+        let course=form.course.value;
+        let batch=form.batch.value;
+        let image=form.image.value;
+        
+      let p=new Data(name,course,batch,image)
+        arr.push(p);
+        localStorage.setItem("Data", JSON.stringify(arr));
+    }
+    // console.log(arr)
+document.getElementById("total").innerHTML=(arr.length-1)
+
+
+for(var i=0;i<arr.length;i++){
+   
+console.log(arr[i])
+}
+</script>
