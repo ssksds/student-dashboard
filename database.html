@@ -54,6 +54,7 @@
                 let trash=JSON.parse(localStorage.getItem("trash"))||[];
                 trash.push(el)
                 localStorage.setItem("trash",JSON.stringify(trash))
+                window.location.reload()
             }else{
                 return i !==index;
             }
