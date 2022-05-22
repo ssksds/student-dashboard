@@ -5,15 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #navbar{
+            display:flex;
+            gap:30px;
+           
+        }
+        #navbar>div{
+            background-color: aquamarine;
+            border-radius: 5px;
+        }
+        .vl {
+  border-left: 6px solid rgb(7, 7, 7);
+  
+}
+    </style>
 </head>
 <body>
-    <button><a href="./database.html">database</a></button>
+   
 
     <div id="navbar">
-        <h1 id="web18">Ftweb-18- 2</h1>
-        <h1 id="web19">ftweb-19-5</h1>
-      
-    </div>
+        <div id="batch1"> batch</div>
+        <div class="vl"></div>
+        <div id="batch2">web</div>
+        <button><a href="./database.html">database</a></button>
+      </div>
     <form onsubmit="storeData(event)" id="data">
         <input type="text" id="name" placeholder="name">
         <input type="text" id="course" placeholder="couse">
@@ -47,8 +63,9 @@ function Data(name, course,batch,image) {
       let arr=JSON.parse(localStorage.getItem("Data"))||[];
         arr.push(p);
         localStorage.setItem("Data", JSON.stringify(arr));
+        window.location.reload()
     }
-    // console.log(arr)
+   
 // document.getElementById("total").innerHTML=(arr.length-1)
 
 
@@ -59,14 +76,18 @@ function calculate(){
     for(let j=0;j<count.length;j++){
         if(!obj[count[j].batch]){
             obj[count [j].batch]=1;
+           
             }
     }
     for(let j=0;j<count.length;j++){
         obj[count [j].batch]++;
+        // console.log(obj[count].batch)
         
     }
-    
+    document.getElementById("batch1").innerHTML=`Ft-web-19__${obj[Object.keys(obj)[0]]}`; // returns first
+    document.getElementById("batch2").innerHTML=`Ft-web-18__${obj[Object.keys(obj)[1]]}`; // returns second
     console.log(obj)
 }
 calculate()
+
 </script>
