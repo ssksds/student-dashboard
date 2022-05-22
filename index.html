@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <button><a href="./database.html">database</a></button>
+
     <div id="navbar">
-        <div id="total"></div>
+        <h1 id="web18">Ftweb-18- 2</h1>
+        <h1 id="web19">ftweb-19-5</h1>
+      
     </div>
     <form onsubmit="storeData(event)" id="data">
         <input type="text" id="name" placeholder="name">
@@ -23,11 +27,11 @@
 function Data(name, course,batch,image) {
   this.name = name;
   this.course = course;
-  this.batch = batch;
+  this.batch = `Ft-web${batch}`;
   this.image = image;
   }
 // var student=JSON.parse(localStorage.getItem("student"))||[];
-    let arr=JSON.parse(localStorage.getItem("Data"))||[];
+    
 
     function storeData(e){
         e.preventDefault();
@@ -40,15 +44,29 @@ function Data(name, course,batch,image) {
         let image=form.image.value;
         
       let p=new Data(name,course,batch,image)
+      let arr=JSON.parse(localStorage.getItem("Data"))||[];
         arr.push(p);
         localStorage.setItem("Data", JSON.stringify(arr));
     }
     // console.log(arr)
-document.getElementById("total").innerHTML=(arr.length-1)
+// document.getElementById("total").innerHTML=(arr.length-1)
 
 
-for(var i=0;i<arr.length;i++){
-   
-console.log(arr[i])
+function calculate(){
+   let count=JSON.parse(localStorage.getItem("Data"))||[];
+
+    let obj={};
+    for(let j=0;j<count.length;j++){
+        if(!obj[count[j].batch]){
+            obj[count [j].batch]=1;
+            }
+    }
+    for(let j=0;j<count.length;j++){
+        obj[count [j].batch]++;
+        
+    }
+    
+    console.log(obj)
 }
+calculate()
 </script>
